@@ -1,0 +1,28 @@
+/* Footer Styles */
+footer {
+    background: #182938;
+    padding: 2px;
+    color: white;
+    text-align: center;
+  }
+  
+  footer a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  footer .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  footer .footer-content p{
+    margin: 10px 0px;
+    font-weight: 300;
+  }
+  footer .footer-content img{
+    width: 2rem;
+    height: 2rem;
+    padding: 6px;
+  }

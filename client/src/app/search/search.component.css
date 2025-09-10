@@ -1,0 +1,341 @@
+main {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.form-inline {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px !important;
+}
+
+
+.custom-search-form {
+    max-width: 75vw;
+  }
+
+  .mb-3 {
+    margin-top: 50px;
+  }
+  
+
+  .custom-search-form .form-control {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  
+  .custom-search-form .btn-primary {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: #3f6ba1; 
+    border: none;
+  }
+
+  .custom-search-form .btn-secondary {
+    background-color: #716f6f; 
+    border: none;
+  }
+  
+
+  .spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .results-container {
+    padding: 1rem 0;
+    max-width: 75vw;
+}
+
+.tab-content .tab-pane.active {
+    display: block;
+}
+
+.tab-content .tab-pane {
+    display: none;
+}
+
+.card {
+    width: 18vw;
+    flex: 0 0 auto;
+}
+  
+.card img {
+    object-fit: cover;
+    height: 15vw;
+}
+
+.card-body.search, .card-body.smlr {
+    background-color: #182938 ;
+    color: white;
+    border-radius: inherit;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.card-body.search h5, .card-body.smlr h5 {
+    font-size: 1rem;
+    font-weight: 400;
+    text-overflow: inherit;
+}
+
+.card:hover {
+    .card-body.search, .card-body.smlr, .card-body.search.selected, .card-body.smlr.selected   {
+        background-color: #004E8F;
+    }
+}
+
+.alert {
+    width: 75vw;
+}
+
+.star-button {
+    background-color: #004E8F; 
+    border: none;
+    border-radius: 50%;
+    width: 2rem;    
+    height: 2rem;   
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.star-button i {
+    color: #fff; 
+    font-size: 1.3rem; 
+}
+
+.star-button.starred i {
+    color: #ffc107; 
+}
+
+.nav {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75vw;
+}
+
+.nav-item {
+    width: 50%;
+}
+
+.nav-link {
+    width: 100%;
+}
+
+.nav-link.active {
+    background-color: #004E8F;
+    color: white;
+}
+
+.spinner-border {
+    border: #004E8F 2.5px solid;
+    border-right-color: transparent;
+}
+
+.tab-pane {
+    width: 75vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.artist-info {
+    line-height: 1.6;   
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.artist-name {
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+
+
+.artist-subtitle {
+    color: #555; 
+}
+
+/* Biography section */
+.artist-bio p {
+    margin-bottom: 1rem;
+    text-align: justify; 
+}
+
+.artist-bio {
+    max-height: 40vh;
+    overflow-y: auto;  
+    padding-right: 1rem; 
+}
+
+
+.artist-info .d-flex .star-button {
+    background-color: transparent;
+}
+
+.artist-info .d-flex .bi-star{
+    color: black
+}
+
+/* Artworks section */
+.artwork-card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-title-container {
+    display: flex; 
+    justify-content: center;
+    padding: 20px 35px;
+}
+
+.card-date {
+    color: #797979;
+    font-weight: 400;
+    margin-left: 10px;
+}
+
+.card-img-top {
+    object-fit: cover;
+    height: 200px;
+}
+
+#artworks .card {
+    width: calc(75vw/4);
+}
+
+
+.modal-content {
+    border-radius: 0.5rem;
+}
+
+#artworks .list-group-item {
+    background-color: rgb(233, 233, 233);
+    text-align: center;
+    padding: 0;
+    .btn {
+        background-color: transparent;
+        border: none;
+        color: black;
+    }
+}
+
+#artworks .list-group-item:hover {
+    background-color: #004E8F;
+    .btn {
+        color: white;
+    }
+}
+
+
+.modal-header {
+    align-items: center;
+    padding: 10px;
+}
+
+.modal-header .mb-3 {
+    width: 50%;
+    align-items: center;
+    margin: 0;
+    .col-md-4 {
+        width: 4vw;
+    }
+}
+
+
+
+.modal-body {
+    margin-bottom: 30px;
+}
+
+.category-img {
+    width: 6vw;     
+    height: 8vw;
+    object-fit: cover; 
+}
+
+.smlr h3{
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .custom-search-form {
+      max-width: 90vw;
+    }
+    .results-container {
+      max-width: 90vw;
+  }
+  .card {
+      width: 55vw;
+  }
+  .card img {
+      height: 50vw;
+  }
+
+  .tab-pane {
+      width: 90vw;
+  }
+
+  .justify-content-between .withstar {
+      width: 50vw;
+      align-items: center;
+  }
+  .justify-content-between {
+
+      align-items: center;
+  }
+
+  .artist-name {
+      width: 100%;          
+      white-space: normal;  
+      word-break: break-word; 
+      font-size: 1.3rem;
+  }
+
+  #artworks .card {
+      width: 90vw;
+  }
+
+  #artworks .card img {
+      height: 120vw;
+  }
+
+  .modal-header .mb-3 {
+      width: 100%;
+  }
+
+  .modal-header h4 {
+      font-size: 1rem;
+  }
+
+  .category-img {
+      width: 12vw;     
+      height: 14vw;
+  }
+  .modal-body .card {
+      width: 100%;
+  }
+  .modal-body .card img {
+      height: 80vw;
+  }
+
+  .alert, .nav {
+      width: 90vw;
+  }
+
+}
+  

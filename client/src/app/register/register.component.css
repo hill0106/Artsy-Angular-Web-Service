@@ -1,0 +1,44 @@
+main {
+    min-height: 80vh;
+}
+.container {
+    border: lightgray 1px solid;
+    border-radius: 5px;
+    padding: 1rem;
+    width: 25vw;
+}
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-control.is-invalid {
+    border-color: #dc3545;
+  }
+
+.mt-5 .register-btn {
+    margin: 15px 0px;
+    width: 100%;
+    background-color: #124da0;
+    border: none;
+    color: white;
+}
+
+.mt-5 .register-btn:active {
+    background-color: #0d6efd;
+}
+.mt-3 {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px !important;
+}
+.mt-3 .login{
+    color: #1E4C8A;
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+      width: 90vw;
+    }
+    
+}

@@ -1,0 +1,80 @@
+<app-navbar></app-navbar>
+<main>
+    <div class="container mt-5">
+        <h3 class="mb-4">Login</h3>
+        <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" novalidate>
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid': (email.invalid && (email.dirty || email.touched)) || backendErrors.email
+              }"
+              id="email"
+              name="email"
+              required
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,20}$"
+              [(ngModel)]="formData.email"
+              #email="ngModel"
+              placeholder="Enter email"
+            />
+        <div class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <small *ngIf="email.errors?.['required']">Email is required.</small>
+            <small *ngIf="email.errors?.['pattern']">Email must be valid.</small>
+          </div>
+          <div class="text-danger" *ngIf="backendErrors.email">
+            <small>{{ backendErrors.email }}</small>
+          </div>
+          </div>
+      
+          <!-- Password -->
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid': password.invalid && (password.dirty || password.touched) 
+                || backendErrors.general
+              }"
+              id="password"
+              name="password"
+              required
+              [(ngModel)]="formData.password"
+              #password="ngModel"
+              placeholder="Password"
+            />
+            <div class="text-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+              <small *ngIf="password.errors?.['required']">Password is required.</small>
+            </div>
+            <div class="text-danger" *ngIf="backendErrors.general">
+              <small>{{ backendErrors.general }}</small>
+            </div>
+          </div>
+      
+          
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="btn btn-block login-btn"
+            [disabled]="registerForm.invalid || isLoading"
+          >
+          <span *ngIf="!isLoading">Login</span>
+          <span *ngIf="isLoading">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          </span>
+          </button>
+        </form>
+    
+      </div>
+        
+        <!-- Login Link -->
+        <div class="mt-3">
+            <span>Don't have an account yet?  <a routerLink="/register" class="register">Register</a></span>
+        </div>
+    
+</main>
+
+<app-footer></app-footer>
