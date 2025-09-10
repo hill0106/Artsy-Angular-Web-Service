@@ -1,0 +1,11 @@
+<div class="notification-container position-fixed top-0 end-0 p-3" style="z-index: 1050;">
+    <div *ngFor="let note of notificationService.notifications" class="alert mb-2"
+         [ngClass]="{
+           'alert-success': note.type === 'success',
+           'alert-danger': note.type === 'danger',
+         }" role="alert">
+      {{ note.message }}
+      <button type="button" class="btn-close" aria-label="Close" (click)="remove(note)"></button>
+    </div>
+  </div>
+  

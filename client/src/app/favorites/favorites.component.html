@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+<main>
+    <app-notifications></app-notifications>
+    <ng-container *ngIf="loadingFavorites; else favoritesContent">
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #favoritesContent>
+        <ng-container *ngIf="favorites.length > 0; else noFavorites">
+            <div class="favorites-container">
+                <div 
+                class="favorite-card card mb-3"
+                *ngFor="let fav of favorites"
+                (click)="goToArtistDetail(fav.artistId)"
+                >
+                    <div
+                        class="favorite-bg"
+                        [style.backgroundImage]="'url(' + fav.image + ')'">
+                        <div class="bg-overlay"></div>
+                    </div>
+                   
+                    <div class="overlay-content">
+                        <div class="artist-info">
+                            <h5 class="artist-name">{{ fav.name }}</h5>
+                            <small class="birth-death">{{ fav.birthday }} - {{ fav.deathday || '' }}</small>
+                            <small class="birth-death">{{ fav.nationality }}</small>
+                        </div>
+                    
+                       
+                        <div class="bottom-row">
+                            <span class="relative-time">{{ getRelativeTime(fav.likedAt) }}</span>
+                            <button
+                            class="remove-btn"
+                            (click)="removeFavorites(fav.artistId, $event);"
+                            >
+                            Remove
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>          
+        </ng-container>
+    </ng-template>
+
+    <ng-template #noFavorites>
+        <div style="display: flex; align-items: center; justify-content: center; margin-top: 20px;">
+            <div class="alert alert-danger" role="alert">No favorite artists.</div>
+        </div>
+    </ng-template>
+</main>
+<app-footer></app-footer>

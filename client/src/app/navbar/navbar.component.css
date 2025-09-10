@@ -1,0 +1,60 @@
+.navbar-collapse {
+    flex-grow: 0;
+}
+.navbar-brand {
+    margin: 0px 20px;
+}
+
+.nav-item a {
+    color:#222;
+    margin: 10px;
+}
+.nav-item .btn:hover{
+    background: #1E4C8A;
+    border-radius: 5px;
+    color: white!important;
+}
+
+.btn-check:checked + .btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check) + .btn:active{
+    background: #1E4C8A;
+    border-radius: 5px;
+    color: white!important;
+}
+
+.profile-rounded-circle {
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    height: 2rem;
+    margin-right: 10px !important;
+}
+
+.dropdown {
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .mr-2 a{
+        width: 90vw;
+        text-align: start;
+        /* padding: 15px 30px; */
+    }
+
+    .dropdown-menu .dropdown-item {
+        padding: 0;
+    } 
+
+    .navbar-nav .dropdown-menu {
+        position: absolute !important;
+        z-index: 1000;
+        top: 80%;
+        left: -40%;
+        width: 10vw;
+    }
+
+    .dropdown {
+        margin-left: 33vw;
+    }
+    
+}

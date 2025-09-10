@@ -1,0 +1,33 @@
+runtime: nodejs20
+entrypoint: "npm start"
+service: default
+env_variables:
+  SALT: 16
+  JWTPRIVATEKEY: "
+MIICWwIBAAKBgGyxEojwI5p4wVKHCI7nd/0OSASqgJEIzH+5e8j6m8gB+0fF+OAU
+HI7syx5KaWc+AHpG0ZAQMzdv82nsJMe+bw4QNQ7v3vV8edyPoXsuNBCIebPfIJfF
+yTZAzbVS9ClOAzoWcPF2YJlBbl/uJR5NkIih2pVJ6L3OHDtKAiCj7tE1AgMBAAEC
+gYAoTDZdAvuQR/kVCe+IXBVGg0b8Q+LK4wI+0JwuVYvwSZvKboHpQkucSfq8zkXp
++zjeHOeRjBARG7aZrO2uCNLPW+bVXoLEauJbFkLGU0uCr+RMrt6uEbZCeh/HxlTJ
+NKBpSIep9SrUtF2cy/lJJl7aK7pN8edl+PnMjZFzWjDcuQJBAMsWwzCVPdMtTlFi
+09FsbwDIqXMJCXUqRhARagU61aia1kT+Anm8AofD6v4aBy30zAfzdXuqpBr6D7qE
+eHFGn78CQQCJAmIyCv+PxehnBRnNU1C/WkLsmAqMq/VkGwiW5mdq5U3Jz59ut33O
+UBFroMAvbuP0/aHboUlBLh9uDM7z1wwLAkBaMefKQd3NVge8WXndPp0l6fhnoJHU
+uUuYg0NkwzZ0xR94UJ9k1T0Cct6Ar6qUnG2o8lUw8R4k5P3rRj3/gPAdAkB0xDFI
+EROJRtQwqKo60Zzp2FVdKp8jEJLMxDVn1emhste+/VIVnBB+OsL+BTyFsG5bJ6ZA
+do7mHBbxRb1DF63NAkEAyb1xoBwTjoxc6zdkJgugdVhbU9bBO5G+kznVRcpnhP4z
+/Nr+NnMkpVmytd+x0q3dXUO9Mn7rCRfzJSuLq1aErw=="
+  NODE_ENV: "production"
+  DB: "mongodb+srv://trinity:trinitytest123@cluster0.an8ds.mongodb.net/test?retryWrites=true&w=majority"
+handlers:
+  - url: /api/.*
+    script: auto
+    secure: always
+  - url: /(.*\.(js|css|png|jpg|ico|json|woff2|ttf|svg))
+    static_files: client/dist/client/browser/\1
+    upload: client/dist/client/browser/(.*\.(js|css|png|jpg|ico|json|woff2|ttf|svg))
+    secure: always
+  - url: /.*
+    static_files: client/dist/client/browser/index.html
+    upload: client/dist/client/browser/index.html
+    secure: always

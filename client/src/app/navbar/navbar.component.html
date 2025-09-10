@@ -1,0 +1,117 @@
+<app-notifications></app-notifications>
+<ng-container *ngIf="(isAuthenticated$ | async); else unauthenticatedBar">
+<!-- authenticated NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid d-flex justify-content-between">
+        <a class="navbar-brand" href="#">Artist Search</a>
+        <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        >
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <!-- Search -->
+                <li class="nav-item mr-2" routerLinkActive="active">
+                    <a class="btn" routerLink="/" 
+                       routerLinkActive="active" 
+                       [routerLinkActiveOptions]="{ exact: true }">
+                        Search
+                    </a>
+                </li>
+                <li class="nav-item mr-2" routerLinkActive="active">
+                    <a class="btn" routerLink="/favorites" 
+                       routerLinkActive="active" 
+                       [routerLinkActiveOptions]="{ exact: true }">
+                        Favorites
+                    </a>
+                </li>
+
+            </ul>
+            <ul class="nav navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a
+                      class="nav-link dropdown-toggle d-flex align-items-center"
+                      href="/"
+                      id="navbarDropdownMenuLink"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                     
+                      <img
+                        [src]="user.data.profileImageUrl"
+                        alt="profile"
+                        class="rounded-circle me-1 profile-rounded-circle"
+                      />
+                      {{ user.data.name }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end position-absolute">
+                        <a class="dropdown-item text-danger" href="/" style="color: #C84025;" (click)="notify(1)">
+                            Delete account
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-primary" href="/register" style="color: #1E4C8A;" (click)="notify(2)">
+                            Log out
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</ng-container>
+<!-- unauthenticated NAVBAR -->
+<ng-template #unauthenticatedBar>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid d-flex justify-content-between">
+        <a class="navbar-brand" href="#">Artist Search</a>
+        <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        >
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item mr-2" routerLinkActive="active">
+                <a class="btn" routerLink="/" 
+                   routerLinkActive="active" 
+                   [routerLinkActiveOptions]="{ exact: true }">
+                    Search
+                </a>
+            </li>
+            <li class="nav-item mr-2" routerLinkActive="active">
+                <a class="btn" routerLink="/login" 
+                   routerLinkActive="active" 
+                   [routerLinkActiveOptions]="{ exact: true }">
+                    Login
+                </a>
+            </li>
+            <li class="nav-item mr-2" routerLinkActive="active">
+                <a class="btn" routerLink="/register" 
+                   routerLinkActive="active" 
+                   [routerLinkActiveOptions]="{ exact: true }">
+                    Register
+                </a>
+            </li>
+        </ul>
+        </div>
+    </div>
+</nav>
+</ng-template>
+
+
+  
