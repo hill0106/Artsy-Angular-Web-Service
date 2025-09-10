@@ -1,6 +1,7 @@
 {
-  "name": "client",
-  "version": "0.0.0",
+  "name": "artsy-angular-client",
+  "version": "1.0.0",
+  "description": "Angular frontend for Artsy Angular Web Service",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
