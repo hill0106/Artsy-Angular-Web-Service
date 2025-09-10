@@ -1,14 +1,38 @@
 {
-  "name": "assignment3",
+  "name": "artsy-angular-web-service",
   "version": "1.0.0",
+  "description": "A modern web application that integrates with the Artsy API to provide art discovery, artist information, and personalized favorites management",
   "main": "server/server.js",
   "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js",
+    "build": "cd client && ng build --configuration production",
+    "build:dev": "cd client && ng build",
+    "serve": "cd client && ng serve",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/server.js"
+    "install:all": "npm install && cd client && npm install",
+    "postinstall": "cd client && npm install"
   },
-  "author": "",
+  "keywords": [
+    "artsy",
+    "angular",
+    "nodejs",
+    "express",
+    "mongodb",
+    "art",
+    "api",
+    "web-service"
+  ],
+  "author": "Your Name",
   "license": "ISC",
-  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/artsy-angular-web-service.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/artsy-angular-web-service/issues"
+  },
+  "homepage": "https://github.com/your-username/artsy-angular-web-service#readme",
   "dependencies": {
     "axios": "^1.8.2",
     "bcrypt": "^5.1.1",
