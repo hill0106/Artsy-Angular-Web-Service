@@ -26,13 +26,13 @@ describe('SearchService', () => {
   it('should search artists', () => {
     const mockResponse = {
       _embedded: {
-        artists: [
+        results: [
           { id: '1', name: 'Test Artist' }
         ]
       }
     };
 
-    service.searchArtists('test').subscribe(response => {
+    service.getSearch('test').subscribe((response: any) => {
       expect(response).toEqual(mockResponse);
     });
 
@@ -42,9 +42,9 @@ describe('SearchService', () => {
   });
 
   it('should handle search errors', () => {
-    service.searchArtists('test').subscribe({
+    service.getSearch('test').subscribe({
       next: () => fail('should have failed'),
-      error: (error) => {
+      error: (error: any) => {
         expect(error.status).toBe(500);
       }
     });

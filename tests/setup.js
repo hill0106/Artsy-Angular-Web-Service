@@ -13,3 +13,17 @@ global.console = {
   warn: jest.fn(),
   error: jest.fn(),
 };
+
+// Mock database connection
+jest.mock('../server/db', () => ({
+  connection: jest.fn()
+}));
+
+// Mock fetchToken module
+jest.mock('../server/fetchToken', () => ({
+  getToken: jest.fn(() => 'mock-token'),
+  fetchToken: jest.fn()
+}));
+
+// Mock axios
+jest.mock('axios');
