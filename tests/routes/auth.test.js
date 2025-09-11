@@ -1,13 +1,25 @@
 const request = require('supertest');
 const app = require('../../server/server');
 
+// Mock the User model
+jest.mock('../../server/models/user', () => ({
+  User: {
+    findOne: jest.fn(),
+    findById: jest.fn()
+  },
+  validate: jest.fn()
+}));
+
+// Mock bcrypt
+jest.mock('bcrypt', () => ({
+  compare: jest.fn(),
+  genSalt: jest.fn(),
+  hash: jest.fn()
+}));
+
 describe('Auth API', () => {
-  test('should return 400 for register without required fields', async () => {
-    const response = await request(app)
-      .post('/api/auth/register')
-      .send({});
-    
-    expect(response.status).toBe(400);
+  beforeEach(() => {
+    jest.clearAllMocks();
   });
 
   test('should return 400 for login without credentials', async () => {
@@ -16,21 +28,27 @@ describe('Auth API', () => {
       .send({});
     
     expect(response.status).toBe(400);
+    expect(response.body.message).toBe('Invalid email or password');
   });
 
-  test('should handle register with valid data', async () => {
-    const userData = {
-      username: 'testuser',
-      email: 'test@example.com',
-      password: 'TestPassword123!'
-    };
+  test('should handle logout', async () => {
+    const response = await request(app)
+      .post('/api/auth/logout')
+      .send({});
+    
+    expect(response.status).toBe(200);
+    expect(response.body.message).toBe('Logged out successfully');
+  });
+
+  test('should return 400 for signup without required fields', async () => {
+    const { validate } = require('../../server/models/user');
+    validate.mockReturnValue({ error: { details: [{ message: 'Email is required' }] } });
 
     const response = await request(app)
-      .post('/api/auth/register')
-      .send(userData);
+      .post('/api/user/signup')
+      .send({});
     
-    // This will likely fail due to database connection in test
-    // but we can test the endpoint structure
-    expect([200, 400, 500]).toContain(response.status);
+    expect(response.status).toBe(400);
+    expect(response.body.message).toBe('Email is required');
   });
 });

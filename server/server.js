@@ -13,19 +13,20 @@ const connection = require("./db");
 
 const { fetchToken } = require('./fetchToken');
 
+// Only start server if not in test mode
+if (process.env.NODE_ENV !== 'test') {
+  //database
+  connection();
 
-//database
-connection();
-
-// Fetch the Artsy token on server start
-fetchToken();
-
-// Schedule token refresh every 7 days (example cron schedule)
-cron.schedule('0 0 */7 * *', () => {
+  // Fetch the Artsy token on server start
   fetchToken();
-  console.log('Token refresh triggered by cron job.');
-});
 
+  // Schedule token refresh every 7 days (example cron schedule)
+  cron.schedule('0 0 */7 * *', () => {
+    fetchToken();
+    console.log('Token refresh triggered by cron job.');
+  });
+}
 
 app.use(express.json());
 app.use(cookieParser());
@@ -44,7 +45,12 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/client/browser/index.html'));
 });
 
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Only start server if not in test mode
+if (process.env.NODE_ENV !== 'test') {
+  const PORT = process.env.PORT || 8080;
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
+
+module.exports = app;
